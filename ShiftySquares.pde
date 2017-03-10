@@ -1,69 +1,76 @@
-int theSeed = 0;
-int sz = 30;
-float d;
+//Moving Squares
+//Andy Seiple
 
-void setup() {
+int x = 0;
+int y = 0;
+int sz = 50;
+int theSeed = 0;
+int scale = 0;
+int r = 255;
+int g = 255;
+int b = 255;
+String text = "Press R, G, or B to change color. Press mouse 1 to reset squares and color";
+void setup()
+{
   size(500, 500);
-  background(220);
+  background(255, 255, 255);
+  fill(255);
+  text(text, 10, 10);
   noStroke();
-  //noLoop();
 }
 
-void draw() {
-  background(220);
-
-  fill(0);
-  d = random(4);
-  textSize(40);
-  text(d, 50, 50);
-  
-  fill(78, 193, 78, 150);
-
-  //randomSeed(theSeed);
-  
-  int x = 0;
-  int y = 0;
+void draw()
+{
+  background(5, 5, 5);
+  fill(r, g, b, 255);
+  randomSeed(theSeed);
+  x = 0;
   while (x <= 450)
   {
-    while (y <= 450)
-    {     
-      float shiftX1 = mouseX/10 * random(-1, 1);
-      float shiftY1 = mouseY/10 * random(-1, 1);
-      float shiftX2 = mouseX/10 * random(-1, 1);
-      float shiftY2 = mouseY/10 * random(-1, 1);
-      float shiftX3 = mouseX/10 * random(-1, 1);
-      float shiftY3 = mouseY/10 * random(-1, 1);
-      float shiftX4 = mouseX/10 * random(-1, 1);
-      float shiftY4 = mouseY/10 * random(-1, 1);
+    while (y <= 500)
+    {
+      float shiftX1 = scale + mouseX/10 * random(-1, 1);
+      float shiftY1 = scale + mouseY/10 * random(-1, 1);
+      //float shiftX2 = scale + mouseX/10 * random(-1, 1);
+      //float shiftY2 = scale + mouseY/10 * random(-1, 1);
+      //float shiftX3 = scale + mouseX/10 * random(-1, 1);
+      //float shiftY3 = scale + mouseY/10 * random(-1, 1);
+      //float shiftX4 = scale + mouseX/10 * random(-1, 1);
+      //float shiftY4 = scale + mouseY/10 * random(-1, 1);
       beginShape();
-      vertex(x+shiftX1, y+shiftY1);
-      vertex(x+sz+shiftX2, y+shiftY2);
-      vertex(x+sz+shiftX3, y+sz+shiftY3);
-      vertex(x+shiftX4, y+sz+shiftY4);
+      vertex(x + shiftX1, y + shiftY1);
+      vertex(x + sz + shiftX1, y + shiftY1);
+      vertex(x + sz + shiftX1, y + sz  + shiftY1);
+      vertex(x + shiftX1, y + sz + shiftY1);
       endShape();
       y = y + sz;
     }
     x = x + sz;
     y = 0;
   }
-  
-  
+  fill(0);
+  text(text, 10, 20);
 }
 
 void mousePressed() {
- if(mouseButton == RIGHT) {
-   d = (int)(random(4));
- }
- 
+  theSeed = (int)random(1000);
+  r = (int)random(255);
+  g = (int)random(255);
+  b = (int)random(255);
+  
+  
 }
 
 void keyPressed() {
-  if (key == 'j') 
-  {
-    theSeed = (int)random(1000);
+  if (key == 'r'){
+    r = r - 10;
   }
-  if (key == ' ')
-  {
-    
+  
+  if (key == 'g'){
+    g = g - 10;
+  }
+  
+  if (key == 'g'){
+    b = b - 10;
   }
 }
