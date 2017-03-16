@@ -1,4 +1,4 @@
-//Moving Squares
+//Shifty Squares
 //Andy Seiple
 
 int x = 0;
@@ -31,12 +31,6 @@ void draw()
     {
       float shiftX1 = scale + mouseX/10 * random(-1, 1);
       float shiftY1 = scale + mouseY/10 * random(-1, 1);
-      //float shiftX2 = scale + mouseX/10 * random(-1, 1);
-      //float shiftY2 = scale + mouseY/10 * random(-1, 1);
-      //float shiftX3 = scale + mouseX/10 * random(-1, 1);
-      //float shiftY3 = scale + mouseY/10 * random(-1, 1);
-      //float shiftX4 = scale + mouseX/10 * random(-1, 1);
-      //float shiftY4 = scale + mouseY/10 * random(-1, 1);
       beginShape();
       vertex(x + shiftX1, y + shiftY1);
       vertex(x + sz + shiftX1, y + shiftY1);
@@ -48,7 +42,7 @@ void draw()
     x = x + sz;
     y = 0;
   }
-  fill(0);
+  fill(255);
   text(text, 10, 20);
 }
 
