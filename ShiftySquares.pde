@@ -1,95 +1,111 @@
-//Shifty Squares
-//Andy Seiple
-
 int x = 0;
 int y = 0;
-int sz = 50;
+int r = 4;
+int g = 8;
+int b = 90;
+int s = 20;
+int f = 25;
+int c = 15;
+int bk = 255;
+int rp = 0;
+int gp = 0;
+int bp = 0;
+int sz = 500;
 int theSeed = 0;
-int scale = 0;
-int r = 255;
-int g = 255;
-int b = 255;
-String text = "Press R, G, or B to change color. Press mouse 1 to reset squares and color";
-void setup()
-{
-  size(500, 500);
-  background(255, 255, 255);
-  fill(255);
-  text(text, 10, 10);
-  noStroke();
-  textSize(18);
-}
+float z = 5;
+float sx0 = 0;
+float sy0 = 0;
+float sx1 = 0;
+float sy1 = 0;
+float sx2 = 0;
+float sy2 = 0;
+float sx3 = 0;
+float sy3 = 0;
+void setup() {
+  size (1920, 1080);
+};
 
-void draw()
-{
-  background(5, 5, 5);
-  fill(r, g, b, 255);
+
+
+void draw() {
   randomSeed(theSeed);
+  background(bk);
+  fill(r, g, b, f);
+  noStroke();
   x = 0;
-  while (x <= 450)
-  {
-    while (y <= 500)
-    {
-      float shiftX1 = scale + mouseX/10 * random(-1, 1);
-      float shiftY1 = scale + mouseY/10 * random(-1, 1);
-      //float shiftX2 = scale + mouseX/10 * random(-1, 1);
-      //float shiftY2 = scale + mouseY/10 * random(-1, 1);
-      //float shiftX3 = scale + mouseX/10 * random(-1, 1);
-      //float shiftY3 = scale + mouseY/10 * random(-1, 1);
-      //float shiftX4 = scale + mouseX/10 * random(-1, 1);
-      //float shiftY4 = scale + mouseY/10 * random(-1, 1);
+  y = 0;
+  while (y<=height) {
+    while (x<width) {
+      z = random(1, 700);
+      sx0 = mouseX/z * random(-1, 1);
+      sy0 = mouseY/z * random(-1, 1);
+      sx1 = mouseX/z * random(-1, 1);
+      sy1 = mouseY/z * random(-1, 1);
+      sx2 = mouseX/z * random(-1, 1);
+      sy2 = mouseY/z * random(-1, 1);
+      sx3 = mouseX/z * random(-1, 1);
+      sy3 = mouseY/z * random(-1, 1);
       beginShape();
-      vertex(x + shiftX1, y + shiftY1);
-      vertex(x + sz + shiftX1, y + shiftY1);
-      vertex(x + sz + shiftX1, y + sz  + shiftY1);
-      vertex(x + shiftX1, y + sz + shiftY1);
+      vertex(x+sx0, y+sy0);
+      vertex(x+s+sx1, y+sy1);
+      vertex(x+s+sx2, y+s+sy2);
+      vertex(x+sx3, y+s+sy3);
       endShape();
-      y = y + sz;
-    }
-    x = x + sz;
-    y = 0;
-  }
-  fill(255);
-  text(text, 10, 50);
-}
-
+      x = x+s;
+    };
+    y=y+s;
+    x=0;
+  };
+};
 void mousePressed() {
-  theSeed = (int)random(1000);
-  r = (int)random(255);
-  g = (int)random(255);
-  b = (int)random(255);
-  
-  
-}
-
-void keyPressed() {
-  if (key == 'r'){
-    r = r - 10;
-  }
-  
-  if (key == 'g'){
-    g = g - 10;
-  }
-  
-  if (key == 'g'){
-    b = b - 10;
-  }
-}
-
-//void keyPressed () {
-//  if (key == 'j') {
-//    theSeed = (int)random(1000);
-//  }
-
-//  if (key == '+') {
-//    if (scale <= 0) {
-//      scale = scale + 10;
-//    }
-//  }
-
-//  if (key == '-') {
-//    if (scale <= 10) {
-//      scale = scale - 10;
-//    }
-//  }
-//}
+  theSeed=(int)random(1000009);
+};
+void keyPressed () {
+  if (key=='r') {
+    rp = 1;
+    gp = 0;
+    bp = 0;
+  };
+  if (key=='g') {
+    rp = 0;
+    gp = 1;
+    bp = 0;
+  };
+  if (key=='b') {
+    rp = 0;
+    gp = 0;
+    bp = 1;
+  };
+  if ((key=='s')&&(bk == 255)) {
+    bk = 0;
+    f = 100;
+  };
+  if ((key=='a')&&(bk == 0)) {
+    bk = 255;
+    f = 25;
+  };
+  if (bp == 1) {
+    if (keyCode == UP) {
+      b = b+c;
+    };
+    if (keyCode == DOWN) {
+      b = b-c;
+    };
+  };
+  if (rp == 1) {
+    if (keyCode == UP) {
+      r = r+c;
+    };
+    if (keyCode == DOWN) {
+      r = r-c;
+    };
+  };
+  if (gp == 1) {
+    if (keyCode == UP) {
+      g = g+c;
+    };
+    if (keyCode == DOWN) {
+      g = g-c;
+    };
+  };
+};
