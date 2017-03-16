@@ -1,4 +1,4 @@
-//Shifty Squares
+//Moving Squares
 //Andy Seiple
 
 int x = 0;
@@ -9,12 +9,15 @@ int scale = 0;
 int r = 255;
 int g = 255;
 int b = 255;
-//String text = "Press R, G, or B to change color. Press mouse 1 to reset squares and color";
+String text = "Press R, G, or B to change color. Press mouse 1 to reset squares and color";
 void setup()
 {
   size(500, 500);
   background(255, 255, 255);
+  fill(255);
+  text(text, 10, 10);
   noStroke();
+  textSize(18);
 }
 
 void draw()
@@ -29,6 +32,12 @@ void draw()
     {
       float shiftX1 = scale + mouseX/10 * random(-1, 1);
       float shiftY1 = scale + mouseY/10 * random(-1, 1);
+      //float shiftX2 = scale + mouseX/10 * random(-1, 1);
+      //float shiftY2 = scale + mouseY/10 * random(-1, 1);
+      //float shiftX3 = scale + mouseX/10 * random(-1, 1);
+      //float shiftY3 = scale + mouseY/10 * random(-1, 1);
+      //float shiftX4 = scale + mouseX/10 * random(-1, 1);
+      //float shiftY4 = scale + mouseY/10 * random(-1, 1);
       beginShape();
       vertex(x + shiftX1, y + shiftY1);
       vertex(x + sz + shiftX1, y + shiftY1);
@@ -40,8 +49,8 @@ void draw()
     x = x + sz;
     y = 0;
   }
-  //fill(255);
-  //text(text, 10, 20);
+  fill(255);
+  text(text, 10, 50);
 }
 
 void mousePressed() {
@@ -66,3 +75,21 @@ void keyPressed() {
     b = b - 10;
   }
 }
+
+//void keyPressed () {
+//  if (key == 'j') {
+//    theSeed = (int)random(1000);
+//  }
+
+//  if (key == '+') {
+//    if (scale <= 0) {
+//      scale = scale + 10;
+//    }
+//  }
+
+//  if (key == '-') {
+//    if (scale <= 10) {
+//      scale = scale - 10;
+//    }
+//  }
+//}
