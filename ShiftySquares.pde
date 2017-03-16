@@ -9,13 +9,13 @@ int scale = 0;
 int r = 255;
 int g = 255;
 int b = 255;
-String text = "Press R, G, or B to change color. Press mouse 1 to reset squares and color";
+String instructions = "Press R, G, or B to change color. Press mouse 1 to reset squares and color";
 void setup()
 {
   size(500, 500);
   background(255, 255, 255);
   fill(255);
-  text(text, 10, 10);
+  text(instructions, 10, 10);
   noStroke();
   textSize(18);
 }
@@ -50,7 +50,7 @@ void draw()
     y = 0;
   }
   fill(255);
-  text(text, 10, 50);
+  text(instructions, 10, 50);
 }
 
 void mousePressed() {
