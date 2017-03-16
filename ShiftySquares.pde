@@ -1,4 +1,4 @@
-//Moving Squares
+//Shifty Squares
 //Andy Seiple
 
 int x = 0;
